@@ -7,7 +7,9 @@ Basically it's fetching the first ten Entria members from Github service.
 
 ## Result
 
-![Member Flatlist](https://ibb.co/exkoM7)
+<p align="center">
+  <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" title="Member Flatlist" alt="Member Flatlist">
+</p>
   
 
 ## Features
