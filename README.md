@@ -8,7 +8,7 @@ Basically it's fetching the first ten Entria members from Github service.
 ## Result
 
 <p align="center">
-  <img src="https://ibb.co/exkoM7" alt="Entria Members Flatlist">
+  <img src="https://image.ibb.co/kNYxES/Screenshot_from_2018_05_05_23_32_26.png" alt="Entria Members Flatlist">
 </p>
   
 
