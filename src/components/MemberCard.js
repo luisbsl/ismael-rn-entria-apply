@@ -2,26 +2,6 @@ import React from 'react'
 import { View, Image, Text, Dimensions } from 'react-native'
 import styled from 'styled-components'
 
-export default MemberCard = (props) => {
-  return (
-    <Container>
-      <ImageContainer>
-        <StyledImage
-          resizeMode={'cover'}
-          source={{ uri: `${props.member.avatarUrl}` }} />
-      </ImageContainer>
-      <InfoContainer>
-        <Info>
-          {props.member.name.toUpperCase()}
-        </Info>
-        <Subtitle>
-          by {props.member.login}
-        </Subtitle>
-      </InfoContainer>
-    </Container>
-  )
-}
-
 const Container = styled.View`
   flex-direction: ${'row'};
   margin-bottom: 10px;
@@ -59,3 +39,23 @@ const Info = styled.Text`
 const Subtitle = styled.Text`
   margin-left: 15px;
 `
+
+export default MemberCard = (props) => {
+  return (
+    <Container>
+      <ImageContainer>
+        <StyledImage
+          resizeMode={'cover'}
+          source={{ uri: `${props.member.avatarUrl}` }} />
+      </ImageContainer>
+      <InfoContainer>
+        <Info>
+          {props.member.name.toUpperCase()}
+        </Info>
+        <Subtitle>
+          by {props.member.login}
+        </Subtitle>
+      </InfoContainer>
+    </Container>
+  )
+}

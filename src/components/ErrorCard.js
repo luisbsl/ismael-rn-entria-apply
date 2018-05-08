@@ -2,11 +2,6 @@ import React from 'react'
 import { Text } from 'react-native'
 import Styled from 'styled-components'
 
-export default ErrorCard = (props) =>
-  <Error>
-    {props.error}
-  </Error>
-
 const styles = {
   text: {
     fontWeight: 'bold',
@@ -22,3 +17,8 @@ const Error = Styled.Text`
   background-color: ${'red'};
   color: ${'#fff'};
 `
+
+export default ErrorCard = (props) =>
+  <Error>
+    {props.error}
+  </Error>

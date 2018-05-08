@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { graphql, QueryRenderer } from 'react-relay'
+import Styled from 'styled-components'
 
 import environment from './src/relay-tools/createEnvironment'
 
@@ -33,25 +34,23 @@ const RenderApp = ({ error, props }) => {
   }
 }
 
+const Container = Styled.View`
+  flex: 1;
+  background-color: ${'#fff'};
+  align-items: ${'center'};
+  justify-content: ${'center'};
+`
+
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Container>
         <QueryRenderer
           environment={environment}
           query={AppQuery}
           render={RenderApp}
         />
-      </View>
+      </Container>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
