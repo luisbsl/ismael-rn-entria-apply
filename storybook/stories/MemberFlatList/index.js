@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { Text } from 'react-native'
 import CenterView from '../CenterView';
 
-import MemberFlatList from '../../../src/member/MemberFlatList'
+import MemberFlatlist from '../../../src/components/screens/MemberFlatlist'
 
 const withProps = storiesOf('Member FlatList', module)
   .add('with properties', () => {
@@ -45,13 +45,13 @@ const withProps = storiesOf('Member FlatList', module)
         }
       }
     }
-    return <MemberFlatList viewer={memberList} />
+    return <MemberFlatlist viewer={memberList} />
   });
 
 const withoutProps = storiesOf('Member FlatList', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
   .add('without properties', () => {
-    return <MemberFlatList />
+    return <MemberFlatlist />
   });
 
 export {

@@ -4,7 +4,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import Welcome from './Welcome';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('Welcome', module).add('Project Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 require('./Member')
 require('./MemberFlatList')

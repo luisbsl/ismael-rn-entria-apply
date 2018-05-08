@@ -1,14 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
-
-import {
-  graphql,
-  QueryRenderer,
-} from 'react-relay'
+import { graphql, QueryRenderer } from 'react-relay'
 
 import environment from './src/relay-tools/createEnvironment'
 
-import MemberFlatList from './src/member/MemberFlatList'
+import MemberFlatlist from './src/components/screens/MemberFlatlist'
 
 const AppQuery = graphql`
   query AppQuery {
@@ -30,7 +26,7 @@ const RenderApp = ({ error, props }) => {
     return <Text>{error.message}</Text>
   } else if (props) {
     return (
-      <MemberFlatList viewer={props} />
+      <MemberFlatlist viewer={props} />
     )
   } else {
     return <Text>Loading</Text>

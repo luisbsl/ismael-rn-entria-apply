@@ -1,14 +1,15 @@
 import React from 'react'
 import { FlatList, View, Text, Dimensions } from 'react-native'
+import Styled from 'styled-components'
 
-import Member from './Member'
-import ErrorCard from '../layout/ErrorCard'
+import Member from '../Member'
+import ErrorCard from '../ErrorCard'
 
-export default class MemberFlatList extends React.Component {
+export default class MemberFlatlist extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title} >Entria Members from Github</Text>
+      <Container>
+        <Title>Entria Members from Github</Title>
         {
           this.props.viewer
             ?
@@ -23,21 +24,21 @@ export default class MemberFlatList extends React.Component {
             :
             <ErrorCard error='Error! Cannot fetch data from GraphQL!' />
         }
-      </View>
+      </Container>
     )
   }
 }
 
-const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#f2f2f2',
-    alignItems: 'center',
-    width: Dimensions.get('window').width,
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 15,
-    fontWeight: 'bold'
-  }
-}
+const Container = Styled.View`
+  flex: 1;
+  background-color: ${'#f2f2f2'};
+  align-items: ${'center'};
+  width: ${Dimensions.get('window').width}px;
+`
+
+const Title = Styled.Text`
+  margin-top: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: ${'bold'};
+`

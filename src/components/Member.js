@@ -1,8 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import MemberCard from '../layout/MemberCard'
-import ErrorCard from '../layout/ErrorCard'
+import MemberCard from './MemberCard'
+import ErrorCard from './ErrorCard'
 
 export default class User extends React.Component {
   render() {

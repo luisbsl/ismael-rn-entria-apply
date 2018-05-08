@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import CenterView from '../CenterView';
 
-import Member from '../../../src/member/Member'
+import Member from '../../../src/components/Member'
 
 const withProps = storiesOf('Member', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)

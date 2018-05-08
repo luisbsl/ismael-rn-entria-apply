@@ -1,10 +1,11 @@
 import React from 'react'
 import { Text } from 'react-native'
+import Styled from 'styled-components'
 
 export default ErrorCard = (props) =>
-  <Text style={styles.text}>
+  <Error>
     {props.error}
-  </Text>
+  </Error>
 
 const styles = {
   text: {
@@ -14,3 +15,10 @@ const styles = {
     color: '#fff'
   }
 }
+
+const Error = Styled.Text`
+  font-weight: ${'bold'};
+  align-items: ${'center'};
+  background-color: ${'red'};
+  color: ${'#fff'};
+`
