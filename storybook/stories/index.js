@@ -6,5 +6,5 @@ import Welcome from './Welcome';
 
 storiesOf('Welcome', module).add('Project Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
-require('./Member')
-require('./MemberFlatList')
+// require('./Member')
+// require('./MemberFlatList')

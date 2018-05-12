@@ -1,9 +1,10 @@
 import React from 'react'
 import { FlatList, View, Text, Dimensions } from 'react-native'
 import Styled from 'styled-components'
+import { createFragmentContainer } from 'react-relay'
 
-import Member from '../Member'
-import ErrorCard from '../ErrorCard'
+import MemberCard from './MemberCard'
+import ErrorCard from './ErrorCard'
 
 const Container = Styled.View`
   flex: 1;
@@ -19,20 +20,23 @@ const Title = Styled.Text`
   font-weight: ${'bold'};
 `
 
-export default class MemberFlatlist extends React.Component {
+class MemberFlatlist extends React.Component {
   render() {
     return (
       <Container>
         <Title>Entria Members from Github</Title>
         {
-          this.props.viewer
+          this.props.organization
             ?
             <FlatList
-              data={this.props.viewer.organization.members.edges}
-              keyExtractor={(item, index) => item.node.login}
+              data={this.props.organization.members.edges}
+              keyExtractor={(item, index) => index.toString()}
               renderItem={
                 ({ item }) =>
-                  <Member member={item.node} />
+                  <MemberCard
+                    member={item.node}
+                    navigation={this.props.navigation}
+                  />
               }
             />
             :
@@ -42,3 +46,16 @@ export default class MemberFlatlist extends React.Component {
     )
   }
 }
+
+export default createFragmentContainer(MemberFlatlist, graphql`
+  fragment MemberFlatlist_organization on Organization { 
+    id
+    members(first: 10) {
+      edges {
+        node {
+          ...MemberCard_member
+        }
+      }
+    }
+  }
+`)

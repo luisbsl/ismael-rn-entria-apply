@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Image, Text, Dimensions } from 'react-native'
+import { View, Image, Text, Dimensions, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
+import { createFragmentContainer } from 'react-relay'
 
 const Container = styled.View`
   flex-direction: ${'row'};
@@ -40,22 +41,40 @@ const Subtitle = styled.Text`
   margin-left: 15px;
 `
 
-export default MemberCard = (props) => {
-  return (
-    <Container>
-      <ImageContainer>
-        <StyledImage
-          resizeMode={'cover'}
-          source={{ uri: `${props.member.avatarUrl}` }} />
-      </ImageContainer>
-      <InfoContainer>
-        <Info>
-          {props.member.name.toUpperCase()}
-        </Info>
-        <Subtitle>
-          by {props.member.login}
-        </Subtitle>
-      </InfoContainer>
-    </Container>
-  )
+class MemberCard extends React.Component {
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      this.props.member
+        ?
+        <TouchableHighlight onPress={() => navigate('Member', { login: this.props.member.login })}>
+          <Container>
+            <ImageContainer>
+              <StyledImage
+                resizeMode={'cover'}
+                source={{ uri: `${this.props.member.avatarUrl}` }} />
+            </ImageContainer>
+            <InfoContainer>
+              <Info>
+                {this.props.member.name.toUpperCase()}
+              </Info>
+              <Subtitle>
+                by {this.props.member.login}
+              </Subtitle>
+            </InfoContainer>
+          </Container>
+        </TouchableHighlight>
+        :
+        <ErrorCard error='Error! Member properties is required!' />
+    )
+  }
 }
+
+export default createFragmentContainer(MemberCard, graphql`
+  fragment MemberCard_member on User {
+    id
+    login
+    name
+    avatarUrl
+  }
+`)
